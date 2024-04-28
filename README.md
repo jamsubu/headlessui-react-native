@@ -13,4 +13,4 @@
 
 ## Documentation
 
-Visit following website to see the full API documentation https://headlessui-react-native-docs.vercel.app
+Visit following website to see the full API documentation https://headlessui-react-native.vercel.app
