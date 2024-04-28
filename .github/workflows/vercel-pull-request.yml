@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - apps/docs/**
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
