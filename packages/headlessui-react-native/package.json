@@ -1,5 +1,13 @@
 {
   "name": "headlessui-react-native",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "react": "18.2.0",
+    "react-native": "0.73.6"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  }
 }
