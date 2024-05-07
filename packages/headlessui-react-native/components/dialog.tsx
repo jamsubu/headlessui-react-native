@@ -1,13 +1,13 @@
 import React, { useContext, createContext } from "react";
 import {
+  Modal,
   View,
   Text,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   ViewProps,
   TextProps,
   ButtonProps,
-  ScrollView,
+  ModalProps,
 } from "react-native";
 
 type DialogContextType = {
@@ -28,80 +28,42 @@ type DialogProps = {
   onClose: () => void;
   isOpen: boolean;
   scrollable?: boolean;
-} & ViewProps;
+} & ModalProps;
 
-const Dialog = ({
+export const Dialog = ({
   isOpen,
   onClose,
   scrollable,
   accessibilityLabel = "Dialog",
   ...rest
 }: DialogProps) => {
-  if (!isOpen) return null;
-
-  const Component = scrollable ? ScrollView : View;
   return (
     <DialogContext.Provider value={{ onClose }}>
-      <View
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
-        }}
-        accessibilityRole="alert"
+      <Modal
+        visible={isOpen}
+        transparent={true}
+        onRequestClose={onClose}
+        accessible
         accessibilityLabel={accessibilityLabel}
         {...rest}
-      >
-        <TouchableWithoutFeedback
-          onPress={onClose}
-          accessibilityLabel="Close dialog"
-        >
-          <View
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-            }}
-          />
-        </TouchableWithoutFeedback>
-        <Component>{rest.children}</Component>
-      </View>
+      />
     </DialogContext.Provider>
   );
 };
 
-const DialogPanel = ({
+export const DialogPanel = ({
   accessibilityLabel = "Dialog Panel",
   ...props
-}: ViewProps) => (
-  <View
-    accessibilityRole="none"
-    accessibilityLabel={accessibilityLabel}
-    {...props}
-  />
-);
+}: ViewProps) => <View accessibilityLabel={accessibilityLabel} {...props} />;
 
-const DialogTitle = ({
+export const DialogTitle = ({
   accessibilityLabel = "Dialog Title",
   ...props
 }: TextProps) => {
-  return (
-    <Text
-      accessibilityRole="header"
-      accessibilityLabel={accessibilityLabel}
-      {...props}
-    />
-  );
+  return <Text accessibilityLabel={accessibilityLabel} {...props} />;
 };
 
-const CloseButton = ({
+export const CloseButton = ({
   onClose,
   title = "Close",
   accessibilityLabel = "Close",
@@ -120,13 +82,7 @@ const CloseButton = ({
   );
 };
 
-const Description = ({
+export const Description = ({
   accessibilityLabel = "Description",
   ...props
-}: TextProps) => (
-  <Text
-    accessibilityRole="text"
-    accessibilityLabel={accessibilityLabel}
-    {...props}
-  />
-);
+}: TextProps) => <Text accessibilityLabel={accessibilityLabel} {...props} />;
