@@ -8,7 +8,6 @@ import {
   TextProps,
   ButtonProps,
   ScrollView,
-  AccessibilityProps,
 } from "react-native";
 
 type DialogContextType = {
@@ -29,8 +28,7 @@ type DialogProps = {
   onClose: () => void;
   isOpen: boolean;
   scrollable?: boolean;
-} & ViewProps &
-  AccessibilityProps;
+} & ViewProps;
 
 const Dialog = ({
   isOpen,
@@ -82,7 +80,7 @@ const Dialog = ({
 const DialogPanel = ({
   accessibilityLabel = "Dialog Panel",
   ...props
-}: ViewProps & AccessibilityProps) => (
+}: ViewProps) => (
   <View
     accessibilityRole="none"
     accessibilityLabel={accessibilityLabel}
@@ -93,7 +91,7 @@ const DialogPanel = ({
 const DialogTitle = ({
   accessibilityLabel = "Dialog Title",
   ...props
-}: TextProps & AccessibilityProps) => {
+}: TextProps) => {
   return (
     <Text
       accessibilityRole="header"
@@ -108,7 +106,7 @@ const CloseButton = ({
   title = "Close",
   accessibilityLabel = "Close",
   ...rest
-}: { onClose?: () => void } & ButtonProps & AccessibilityProps) => {
+}: { onClose?: () => void } & ButtonProps) => {
   const { onClose: contextOnClose } = useDialogContext();
   const handleClose = onClose || contextOnClose;
   return (
@@ -125,7 +123,7 @@ const CloseButton = ({
 const Description = ({
   accessibilityLabel = "Description",
   ...props
-}: TextProps & AccessibilityProps) => (
+}: TextProps) => (
   <Text
     accessibilityRole="text"
     accessibilityLabel={accessibilityLabel}
