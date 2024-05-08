@@ -6,7 +6,6 @@
     "dev": "turbo dev",
     "lint": "turbo lint"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=18"
   },

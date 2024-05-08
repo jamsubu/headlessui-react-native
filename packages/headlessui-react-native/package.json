@@ -1,13 +1,19 @@
 {
   "name": "headlessui-react-native",
   "version": "0.0.1",
-  "private": true,
+  "main": "dist/dialog.js",
   "devDependencies": {
+    "@swc/cli": "^0.3.12",
+    "@swc/core": "^1.5.3",
+    "@swc/helpers": "^0.5.11",
     "react": "18.2.0",
     "react-native": "0.73.6"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
+  },
+  "scripts": {
+    "build": "swc src -d dist --copy-files"
   }
 }
