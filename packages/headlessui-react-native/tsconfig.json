@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/components",
+    "outDir": "./dist/src",
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
@@ -10,6 +10,6 @@
     "esModuleInterop": true,
     "strict": true
   },
-  "include": ["components/**/*"],
-  "exclude": ["./dist"]
+  "include": ["src/**/*"],
+  "exclude": ["./dist/src"]
 }

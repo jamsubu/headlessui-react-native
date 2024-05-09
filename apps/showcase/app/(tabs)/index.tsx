@@ -1,4 +1,4 @@
-import { DialogTitle } from "headlessui-react-native";
+import { Description } from "headlessui-react-native";
 import { useState } from "react";
 import { Button, View } from "react-native";
 
@@ -8,7 +8,7 @@ export default function HomeScreen() {
   return (
     <View>
       <Button title="open dialog" />
-      <DialogTitle>Hello?</DialogTitle>
+      <Description>d</Description>
     </View>
   );
 }

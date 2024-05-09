@@ -1,13 +1,13 @@
-import React, { useContext, createContext } from "react";
+import React, { createContext, useContext } from "react";
 import {
-  Modal,
-  View,
-  Text,
-  TouchableOpacity,
-  ViewProps,
-  TextProps,
   ButtonProps,
+  Modal,
   ModalProps,
+  Text,
+  TextProps,
+  TouchableOpacity,
+  View,
+  ViewProps,
 } from "react-native";
 
 type DialogContextType = {

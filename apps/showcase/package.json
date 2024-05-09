@@ -1,11 +1,11 @@
 {
-  "name": "headlessui-react-native-dev",
+  "name": "headlessui-react-native-showcase",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
+    "dev": "expo start --ios",
     "start": "expo start",
     "android": "expo start --android",
-    "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint"
