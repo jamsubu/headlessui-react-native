@@ -9,7 +9,7 @@ export default function HomeScreen() {
   return (
     <View>
       <Button title="open dialog" onPress={() => setIsOpen(true)} />
-      <Modal onClose={onClose} isOpen={isOpen} transparent>
+      <Modal onClose={onClose} isOpen={isOpen}>
         <View
           style={{
             flex: 1,
@@ -19,13 +19,15 @@ export default function HomeScreen() {
             height: "100%",
           }}
         />
-
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <ModalPanel>
+        <ModalPanel
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            flex: 1,
+            margin: 20,
+            backgroundColor: "white",
+          }}
+        >
           <ModalTitle>dasojdasksdk</ModalTitle>
           <View>
             <Text>Im the only content</Text>

@@ -22,6 +22,7 @@ export const Modal = ({
   accessibilityLabel = "Modal",
   style,
   children,
+  transparent = true,
   ...rest
 }: ModalProps) => {
   return (
@@ -30,7 +31,7 @@ export const Modal = ({
       onRequestClose={onClose}
       accessible
       accessibilityLabel={accessibilityLabel}
-      style={{ flex: 1 }}
+      transparent
       {...rest}
     >
       <Pressable style={{ flex: 1 }} onPress={onClose}>
@@ -53,7 +54,7 @@ export const ModalPanel = ({
     {...props}
   />
 );
-
+/** This is the title for your Modal */
 export const ModalTitle = ({
   accessibilityLabel = "Modal Title",
   ...props
