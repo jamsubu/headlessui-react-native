@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/components",
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true
+  },
+  "include": ["components/**/*"],
+  "exclude": ["./dist"]
+}
