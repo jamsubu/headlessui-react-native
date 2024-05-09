@@ -5,10 +5,11 @@ import { Button, Text, View } from "react-native";
 export default function ModalExample() {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
+  const onOpen = () => setIsOpen(true);
 
   return (
     <View>
-      <Button title="Open dialog" onPress={() => setIsOpen(true)} />
+      <Button title="Open dialog" onPress={onOpen} />
       <Modal onClose={onClose} isOpen={isOpen}>
         <View
           style={{
