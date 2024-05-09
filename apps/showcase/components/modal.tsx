@@ -30,7 +30,7 @@ export default function ModalExample() {
             justifyContent: "space-between",
           }}
         >
-          <ModalTitle style={{ fontSize: 20, fontWeight: 700 }}>
+          <ModalTitle style={{ fontSize: 20, fontWeight: "700" }}>
             Payment successful
           </ModalTitle>
           <View>
