@@ -34,7 +34,10 @@ export const Modal = ({
       transparent
       {...rest}
     >
-      <Pressable style={{ flex: 1 }} onPress={onClose}>
+      <Pressable
+        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        onPress={onClose}
+      >
         {children}
       </Pressable>
     </RNModal>

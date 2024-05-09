@@ -1,7 +1,8 @@
 export default {
   logo: <span>Headlessui React Native</span>,
   project: {
-    link: "https://github.com/shuding/nextra",
+    link: "https://github.com/jamsubu/headlessui-react-native",
   },
-  // ... other theme options
+  docsRepositoryBase:
+    "https://github.com/jamsubu/headlessui-react-native/tree/main/apps/docs",
 };
