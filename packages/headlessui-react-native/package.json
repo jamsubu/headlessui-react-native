@@ -22,12 +22,11 @@
     "@swc/helpers": "^0.5.11",
     "chokidar": "^3.6.0",
     "concurrently": "^8.2.2",
-    "react": "18.2.0",
-    "react-native": "0.73.6",
     "typescript": "^5.4.5"
   },
   "peerDependencies": {
     "react": "*",
+    "react-dom": "*",
     "react-native": "*"
   },
   "scripts": {
