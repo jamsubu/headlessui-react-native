@@ -1,4 +1,4 @@
-name: Create Release
+name: Publish Package and Create Release
 
 on:
   push:
@@ -8,22 +8,29 @@ on:
       - "packages/headlessui-react-native/package.json"
 
 jobs:
-  release:
-    name: Create Release
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "lts/*"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Get package version
         id: package-version
         run: echo ::set-output name=version::$(node -p "require('./packages/headlessui-react-native/package.json').version")
+
+      - name: Publish to NPM
+        run: npm publish ./packages/headlessui-react-native --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+
+      - name: Package build
+        run: npm pack ./packages/headlessui-react-native
 
       - name: Create Release
         id: create_release
@@ -35,3 +42,13 @@ jobs:
           release_name: Release v${{ steps.package-version.outputs.version }}
           draft: false
           prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./packages/headlessui-react-native/headlessui-react-native-${{ steps.package-version.outputs.version }}.tgz
+          asset_name: headlessui-react-native-${{ steps.package-version.outputs.version }}.tgz
+          asset_content_type: application/gzip

@@ -3,8 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "turbo dev",
-    "lint": "turbo lint",
-    "publish": "cd packages/headlessui-react-native && npm publish"
+    "lint": "turbo lint"
   },
   "engines": {
     "node": ">=18"
