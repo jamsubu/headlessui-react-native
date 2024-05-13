@@ -21,7 +21,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         working-directory: ./packages/headlessui-react-native
 
       - name: Get package version
