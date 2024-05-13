@@ -40,7 +40,8 @@ jobs:
         run: npm publish ./packages/headlessui-react-native --access public
 
       - name: Package build
-        run: npm pack ./packages/headlessui-react-native
+        run: npm pack
+        working-directory: ./packages/headlessui-react-native
 
       - name: Create Release
         id: create_release
