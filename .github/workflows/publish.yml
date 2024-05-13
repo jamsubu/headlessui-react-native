@@ -20,6 +20,10 @@ jobs:
           node-version: "lts/*"
           registry-url: "https://registry.npmjs.org"
 
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./packages/headlessui-react-native
+
       - name: Get package version
         id: package-version
         run: echo ::set-output name=version::$(node -p "require('./packages/headlessui-react-native/package.json').version")
