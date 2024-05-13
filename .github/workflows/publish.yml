@@ -1,35 +1,37 @@
-name: Releases
+name: Create Release
+
 on:
   push:
     branches:
       - main
+    paths:
+      - "packages/headlessui-react-native/package.json"
 
 jobs:
-  changelog:
+  release:
+    name: Create Release
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Check if version changed
-        id: version_changed
-        run: |
-          git diff --name-only $GITHUB_SHA~1 $GITHUB_SHA | grep "^packages/headlessui-react-native/package.json$"
-          if [ $? -eq 0 ]; then
-            echo "::set-output name=version_changed::true"
-          else
-            echo "::set-output name=version_changed::false"
-          fi
-      - name: Conventional Changelog Action
-        id: changelog
-        uses: TriPSs/conventional-changelog-action@v3.7.1
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          version-file: "./packages/headlessui-react-native/package.json"
-      - name: create release
+          node-version: "lts/*"
+
+      - name: Get package version
+        id: package-version
+        run: echo ::set-output name=version::$(node -p "require('./packages/headlessui-react-native/package.json').version")
+
+      - name: Create Release
+        id: create_release
         uses: actions/create-release@v1
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.version_changed.outputs.version_changed == 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
-          tag_name: ${{ steps.changelog.outputs.tag }}
-          release_name: ${{ steps.changelog.outputs.tag }}
-          body: ${{ steps.changelog.outputs.clean_changelog }}
+          tag_name: v${{ steps.package-version.outputs.version }}
+          release_name: Release v${{ steps.package-version.outputs.version }}
+          draft: false
+          prerelease: false
