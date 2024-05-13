@@ -12,7 +12,7 @@ jobs:
       - name: Check if version changed
         id: version_changed
         run: |
-          git diff --name-only $GITHUB_SHA^ $GITHUB_SHA | grep "^packages/headlessui-react-native/package.json$"
+          git diff --name-only $GITHUB_SHA~1 $GITHUB_SHA | grep "^packages/headlessui-react-native/package.json$"
           if [ $? -eq 0 ]; then
             echo "::set-output name=version_changed::true"
           else
