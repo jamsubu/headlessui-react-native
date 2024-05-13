@@ -15,6 +15,9 @@
     "headlessui",
     "headless"
   ],
+  "files": [
+    "/dist"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@swc/cli": "^0.3.12",
