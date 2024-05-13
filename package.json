@@ -2,9 +2,9 @@
   "name": "headlessui-react-native-monorepo",
   "private": true,
   "scripts": {
-    "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "publish": "cd packages/headlessui-react-native && npm publish"
   },
   "engines": {
     "node": ">=18"
