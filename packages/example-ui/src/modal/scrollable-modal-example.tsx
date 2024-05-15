@@ -34,6 +34,26 @@ export function ScrollableModalExample() {
                 Your payment has been successfully submitted. We’ve sent you an
                 email with all of the details of your order.
               </Text>
+              <Text>
+                Your payment has been successfully submitted. We’ve sent you an
+                email with all of the details of your order.
+              </Text>
+              <Text>
+                Your payment has been successfully submitted. We’ve sent you an
+                email with all of the details of your order.
+              </Text>
+              <Text>
+                Your payment has been successfully submitted. We’ve sent you an
+                email with all of the details of your order.
+              </Text>
+              <Text>
+                Your payment has been successfully submitted. We’ve sent you an
+                email with all of the details of your order.
+              </Text>
+              <Text>
+                Your payment has been successfully submitted. We’ve sent you an
+                email with all of the details of your order.
+              </Text>
             </View>
             <Button title="Got it, thanks!" onPress={() => setIsOpen(false)} />
           </ModalPanel>
