@@ -18,7 +18,8 @@
     "react": "18.2.0",
     "react-native": "0.74.1",
     "react-native-web": "^0.19.11",
-    "typescript": "~5.3.3"
+    "typescript": "~5.3.3",
+    "headlessui-react-native-example-ui": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
