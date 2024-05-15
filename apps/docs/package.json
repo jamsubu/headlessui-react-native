@@ -18,6 +18,7 @@
   },
   "type": "module",
   "devDependencies": {
-    "remark-code-import": "^1.2.0"
+    "remark-code-import": "^1.2.0",
+    "typescript": "^5.4.5"
   }
 }
