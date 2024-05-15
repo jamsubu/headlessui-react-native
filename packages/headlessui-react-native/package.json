@@ -1,7 +1,7 @@
 {
   "name": "headlessui-react-native",
   "title": "HeadlessUI React Native",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "homepage": "https://headlessui-react-native.vercel.app",

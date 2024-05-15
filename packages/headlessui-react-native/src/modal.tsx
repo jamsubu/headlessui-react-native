@@ -34,7 +34,6 @@ export const Modal = ({
   isOpen,
   onClose,
   accessibilityLabel = "Modal",
-  style,
   children,
   transparent = true,
   ...rest
