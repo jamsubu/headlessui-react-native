@@ -1,7 +1,7 @@
 {
   "name": "headlessui-react-native-showcase",
   "main": "index.js",
-  "version": "1.0.1",
+  "version": "0.0.3",
   "scripts": {
     "dev": "expo start --web",
     "start": "expo start",
