@@ -30,7 +30,7 @@ export function ScrollableModalExample() {
               Payment successful
             </ModalTitle>
             <View style={{ paddingTop: 20, paddingBottom: 20 }}>
-              {Array.from({ length: 20 }).map((_, index) => (
+              {Array.from({ length: 50 }).map((_, index) => (
                 <Text key={index}>new line</Text>
               ))}
             </View>
