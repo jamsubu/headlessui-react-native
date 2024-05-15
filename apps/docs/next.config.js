@@ -3,4 +3,14 @@ const withNextra = require("nextra")({
   themeConfig: "./theme.config.jsx",
 });
 
-module.exports = withNextra();
+module.exports = withNextra({
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(js|jsx|ts|tsx)$/,
+      include: /packages\/headlessui-react-native-example-ui\/src/,
+      use: "raw-loader",
+    });
+
+    return config;
+  },
+});

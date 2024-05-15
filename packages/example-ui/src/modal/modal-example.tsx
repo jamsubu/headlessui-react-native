@@ -4,7 +4,6 @@ import { Button, Text, View } from "react-native";
 
 export function ModalExample() {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <View>
       <Button title="Open dialog" onPress={() => setIsOpen(true)} />
