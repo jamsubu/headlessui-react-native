@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "headlessui-react-native-example-ui": "*",
     "next": "^14.2.3",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",

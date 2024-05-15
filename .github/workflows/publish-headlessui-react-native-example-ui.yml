@@ -1,0 +1,24 @@
+name: Publish Package and Create Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/example-ui/package.json"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Authenticate with NPM
+        run: |
+          npm set //registry.npmjs.org/:_authToken="${{ secrets.NPM_ACCESS_TOKEN }}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+
+      - name: Publish to NPM
+        run: npm publish ./packages/example-ui --access public
