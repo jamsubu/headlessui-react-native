@@ -19,20 +19,21 @@ export function ScrollableModalExample() {
           }}
         >
           <ModalPanel
+            scrollable
             style={{
               padding: 20,
               width: 300,
               backgroundColor: "white",
             }}
-            scrollable
           >
             <ModalTitle style={{ fontSize: 20, fontWeight: "700" }}>
               Payment successful
             </ModalTitle>
             <View style={{ paddingTop: 20, paddingBottom: 20 }}>
-              {Array.from({ length: 50 }).map((_, index) => (
-                <Text key={index}>new line</Text>
-              ))}
+              <Text>
+                Your payment has been successfully submitted. We’ve sent you an
+                email with all of the details of your order.
+              </Text>
             </View>
             <Button title="Got it, thanks!" onPress={() => setIsOpen(false)} />
           </ModalPanel>
