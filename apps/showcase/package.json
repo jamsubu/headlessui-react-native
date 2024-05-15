@@ -1,13 +1,14 @@
 {
   "name": "headlessui-react-native-showcase",
-  "main": "expo-router/entry",
+  "main": "index.js",
   "version": "1.0.0",
   "scripts": {
     "dev": "expo start --web",
     "start": "expo start",
     "android": "expo start --android",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "build": "npx expo export -p web"
   },
   "dependencies": {
     "@expo/metro-runtime": "^3.2.1",

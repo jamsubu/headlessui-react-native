@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "headlessui-react-native-showcase",
     "name": "headlessui-react-native-showcase",
     "slug": "headlessui-react-native-showcase",
     "version": "1.0.0",
@@ -24,7 +25,5 @@
     },
     "web": { "bundler": "metro", "favicon": "./assets/favicon.png" },
     "plugins": ["expo-router"]
-  },
-
-  "scheme": "headlessui-react-native-showcase"
+  }
 }

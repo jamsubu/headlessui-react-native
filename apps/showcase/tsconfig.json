@@ -4,7 +4,20 @@
     "strict": true,
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "jsx": "react-native",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "incremental": true,
+    "noUncheckedIndexedAccess": true
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", "index.js"],
+  "exclude": ["node_modules", "build", "dist", ".expo"]
 }
