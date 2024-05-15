@@ -1,16 +1,12 @@
-const withNextra = require("nextra")({
+import nextra from "nextra";
+import remakrCodeImport from "remark-code-import";
+
+const withNextra = nextra({
   theme: "nextra-theme-docs",
   themeConfig: "./theme.config.jsx",
-});
-
-module.exports = withNextra({
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(js|jsx|ts|tsx)$/,
-      include: /packages\/headlessui-react-native-example-ui\/src/,
-      use: "raw-loader",
-    });
-
-    return config;
+  mdxOptions: {
+    remarkPlugins: [[remakrCodeImport, { allowImportingFromOutside: true }]],
   },
 });
+
+export default withNextra();
