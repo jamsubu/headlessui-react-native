@@ -9,14 +9,8 @@
     "node": ">=18"
   },
   "packageManager": "yarn@1.22.19",
-  "workspaces": {
-    "packages": [
-      "apps/*",
-      "packages/"
-    ],
-    "nohoist": [
-      "headlessui-react-native-example-ui"
-    ]
-  },
-  "version": "0.0.0"
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }
