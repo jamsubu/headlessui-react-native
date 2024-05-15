@@ -1,24 +1,24 @@
 import React from "react";
 import {
   Pressable,
-  PressableProps,
   Modal as RNModal,
   ModalProps as RNModalProps,
+  ScrollView,
   Text,
   TextProps,
+  View,
+  ViewProps,
 } from "react-native";
 
 type ModalProps = {
   onClose: () => void;
   isOpen: boolean;
-  scrollable?: boolean;
 } & RNModalProps;
 
 /** The main modal component. */
 export const Modal = ({
   isOpen,
   onClose,
-  scrollable,
   accessibilityLabel = "Modal",
   style,
   children,
@@ -35,7 +35,12 @@ export const Modal = ({
       {...rest}
     >
       <Pressable
-        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "auto",
+        }}
         onPress={onClose}
       >
         {children}
@@ -44,19 +49,29 @@ export const Modal = ({
   );
 };
 
+export type ModalPanelProps = {
+  scrollable?: boolean;
+} & ViewProps;
 /** This indicates the panel of your actual Modal. Clicking outside of this component will trigger the onClose of the Modal component. */
 export const ModalPanel = ({
   accessibilityLabel = "Modal Panel",
+  scrollable,
   ...props
-}: PressableProps) => (
-  <Pressable
-    onPress={(e) => {
-      e.stopPropagation();
-    }}
-    accessibilityLabel={accessibilityLabel}
-    {...props}
-  />
-);
+}: ModalPanelProps) => {
+  const Rest = () => (
+    <Pressable onPress={(e) => e.stopPropagation()} style={{ cursor: "auto" }}>
+      <View {...props} onStartShouldSetResponder={() => true} />
+    </Pressable>
+  );
+
+  return scrollable ? (
+    <ScrollView style={{ overflow: "scroll" }}>
+      <Rest />
+    </ScrollView>
+  ) : (
+    <Rest />
+  );
+};
 /** This is the title for your Modal */
 export const ModalTitle = ({
   accessibilityLabel = "Modal Title",
