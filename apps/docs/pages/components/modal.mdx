@@ -1,5 +1,104 @@
+import { SHOWCASE_HOST } from "@/constants";
 import React from "react";
 
-```jsx copy file=<rootDir>/node_modules/headlessui-react-native-example-ui/src/modal/modal-example.tsx
+# Modal (Dialog)
+
+## Installation
+
+To get started, install Headless UI via npm:
 
 ```
+npm install headlessui-react-native
+```
+
+## Basic example
+
+Modals are built using the `Modal`, `ModalPanel`, and `ModalTitle` components:
+
+<iframe
+  src={`${SHOWCASE_HOST}/components/modal`}
+  width="100%"
+  height="500px"
+></iframe>
+
+```jsx file=<rootDir>/node_modules/headlessui-react-native-example-ui/src/modal/modal-example.tsx
+
+```
+
+## Examples
+
+### Showing/hiding the modal
+
+Modals are controlled components, meaning that you have to provide and manage the open state yourself using the `open` prop and the `onClose` callback.
+
+The `onClose` callback is called when an modal is dismissed, which happens when the user presses the Esc key or clicks outside the `ModalPanel`. In this callback set the `open` state back to `false` to close the modal.
+
+```jsx
+import {  Modal, ModalPanel, ModalTitle } from 'headlessui-react-native'
+import { useState } from 'react'
+
+function Example() {
+  // The open/closed state lives outside of the `Modal` and is managed by you
+  let [isOpen, setIsOpen] = useState(true)
+
+  function async handleDeactivate() {
+    await fetch('/deactivate-account', { method: 'POST' })
+    setIsOpen(false)
+  }
+
+  return (
+    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+      <ModalPanel>
+        <ModalTitle>Deactivate account</ModalTitle>
+        <Text>This will permanently deactivate your account</Text>
+        <Text>Are you sure you want to deactivate your account? All of your data will be permanently removed.</Text>
+
+        {/*
+          You can render additional buttons to dismiss your
+          modal by setting `isOpen` to `false`.
+        */}
+        <Button title="Cancel" onPress={() => setIsOpen(false)}/>
+        <Button title="Deactivate" onPress={handleDeactivate}/>
+      </ModalPanel>
+    </Modal>
+  )
+}
+```
+
+For situations where you don't have easy access to your open/close state, Headless UI provides a `CloseButton` component that will close the nearest modal ancestor when clicked.
+
+```jsx
+import { CloseButton } from "headlessui-react-native";
+import { MyModal } from "./my-modal";
+
+function Example() {
+  return (
+    <MyModal>
+      {/* ... */}
+      <CloseButton>Cancel</CloseButton>
+    </MyModal>
+  );
+}
+```
+
+### Scrollable modals
+
+<iframe
+  src={`${SHOWCASE_HOST}/components/modal/scrollable`}
+  width="100%"
+  height="500px"
+></iframe>
+
+```jsx file=<rootDir>/node_modules/headlessui-react-native-example-ui/src/modal/scrollable-modal-example.tsx
+
+```
+
+## Component API
+
+### Modal
+
+### ModalPanel
+
+### ModalTitle
+
+### CloseButton

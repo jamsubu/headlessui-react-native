@@ -8,7 +8,8 @@ const isDev = process.env.NODE_ENV === "development";
 
 const withNextra = nextra({
   theme: "nextra-theme-docs",
-  themeConfig: "./theme.config.jsx",
+  themeConfig: "./theme.config.tsx",
+  defaultShowCopyCode: true,
   mdxOptions: {
     remarkPlugins: [
       [
