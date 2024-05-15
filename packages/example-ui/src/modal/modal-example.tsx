@@ -1,10 +1,9 @@
 import { Modal, ModalPanel, ModalTitle } from "headlessui-react-native";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, Text, View } from "react-native";
 
-export default function ModalExample() {
+export function ModalExample() {
   const [isOpen, setIsOpen] = useState(false);
-
   return (
     <View>
       <Button title="Open dialog" onPress={() => setIsOpen(true)} />

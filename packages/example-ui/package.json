@@ -1,0 +1,11 @@
+{
+  "name": "headlessui-react-native-example-ui",
+  "main": "src/index.ts",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "headlessui-react-native": "*"
+  },
+  "private": true
+}

@@ -1,5 +1,5 @@
+import { ModalExample } from "headlessui-react-native-example-ui";
 import { View } from "react-native";
-import ModalExample from "./components/modal";
 
 export default function App() {
   return (
