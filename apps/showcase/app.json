@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "headlessui-react-native",
-    "slug": "headlessui-react-native",
+    "name": "headlessui-react-native-showcase",
+    "slug": "headlessui-react-native-showcase",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -13,17 +13,18 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "bundleIdentifier": "com.headlessui-react-native"
+      "bundleIdentifier": "com.headlessui-react-native-showcase"
     },
     "android": {
-      "package": "com.headlessui-react-native",
+      "package": "com.headlessui-react-native-showcase",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
-  }
+    "web": { "bundler": "metro", "favicon": "./assets/favicon.png" },
+    "plugins": ["expo-router"]
+  },
+
+  "scheme": "headlessui-react-native-showcase"
 }
