@@ -1,5 +1,7 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import {
+  Button,
+  ButtonProps,
   Pressable,
   Modal as RNModal,
   ModalProps as RNModalProps,
@@ -15,6 +17,18 @@ type ModalProps = {
   isOpen: boolean;
 } & RNModalProps;
 
+const ModalContext = createContext<{ onClose: () => void } | undefined>(
+  undefined
+);
+
+export const useModal = () => {
+  const context = useContext(ModalContext);
+  if (!context) {
+    throw new Error("useModal must be used within a ModalProvider");
+  }
+  return context;
+};
+
 /** The main modal component. */
 export const Modal = ({
   isOpen,
@@ -26,26 +40,28 @@ export const Modal = ({
   ...rest
 }: ModalProps) => {
   return (
-    <RNModal
-      visible={isOpen}
-      onRequestClose={onClose}
-      accessible
-      accessibilityLabel={accessibilityLabel}
-      transparent
-      {...rest}
-    >
-      <Pressable
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "auto",
-        }}
-        onPress={onClose}
+    <ModalContext.Provider value={{ onClose }}>
+      <RNModal
+        visible={isOpen}
+        onRequestClose={onClose}
+        accessible
+        accessibilityLabel={accessibilityLabel}
+        transparent
+        {...rest}
       >
-        {children}
-      </Pressable>
-    </RNModal>
+        <Pressable
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "auto",
+          }}
+          onPress={onClose}
+        >
+          {children}
+        </Pressable>
+      </RNModal>
+    </ModalContext.Provider>
   );
 };
 
@@ -78,4 +94,20 @@ export const ModalTitle = ({
   ...props
 }: TextProps) => {
   return <Text accessibilityLabel={accessibilityLabel} {...props} />;
+};
+
+/** This is the close button for your Modal */
+export const CloseButton = ({
+  accessibilityLabel = "Close Button",
+  ...props
+}: ButtonProps) => {
+  const { onClose } = useModal();
+
+  return (
+    <Button
+      onPress={onClose}
+      accessibilityLabel={accessibilityLabel}
+      {...props}
+    />
+  );
 };
