@@ -8,7 +8,6 @@
     },
     "target": "es5",
     "loose": false,
-    "externalHelpers": true,
     "transform": {
       "react": {
         "pragma": "React.createElement",
