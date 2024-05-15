@@ -16,5 +16,8 @@
     "build": "next build",
     "start": "next start"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "remark-code-import": "^1.2.0"
+  }
 }
