@@ -1,7 +1,5 @@
-import React, { createContext, useContext } from "react";
+import React from "react";
 import {
-  Button,
-  ButtonProps,
   Pressable,
   Modal as RNModal,
   ModalProps as RNModalProps,
@@ -11,23 +9,12 @@ import {
   View,
   ViewProps,
 } from "react-native";
+import { UIContext } from "./useUIContext";
 
 type ModalProps = {
   onClose: () => void;
   isOpen: boolean;
 } & RNModalProps;
-
-const ModalContext = createContext<{ onClose: () => void } | undefined>(
-  undefined
-);
-
-export const useModal = () => {
-  const context = useContext(ModalContext);
-  if (!context) {
-    throw new Error("useModal must be used within a ModalProvider");
-  }
-  return context;
-};
 
 /** The main modal component. */
 export const Modal = ({
@@ -39,7 +26,7 @@ export const Modal = ({
   ...rest
 }: ModalProps) => {
   return (
-    <ModalContext.Provider value={{ onClose }}>
+    <UIContext.Provider value={{ onClose }}>
       <RNModal
         visible={isOpen}
         onRequestClose={onClose}
@@ -60,7 +47,7 @@ export const Modal = ({
           {children}
         </Pressable>
       </RNModal>
-    </ModalContext.Provider>
+    </UIContext.Provider>
   );
 };
 
@@ -93,20 +80,4 @@ export const ModalTitle = ({
   ...props
 }: TextProps) => {
   return <Text accessibilityLabel={accessibilityLabel} {...props} />;
-};
-
-/** This is the close button for your Modal */
-export const CloseButton = ({
-  accessibilityLabel = "Close Button",
-  ...props
-}: ButtonProps) => {
-  const { onClose } = useModal();
-
-  return (
-    <Button
-      onPress={onClose}
-      accessibilityLabel={accessibilityLabel}
-      {...props}
-    />
-  );
 };
