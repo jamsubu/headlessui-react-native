@@ -14,6 +14,6 @@ It's important to note that this project does not aim to support every feature. 
 
 ## Supporting Features (🚧 => working on..)
 
+- [Disclosure](https://headlessui-react-native.vercel.app/components/disclosure)
 - [Modal](https://headlessui-react-native.vercel.app/components/modal)
-- 🚧 Disclosure
 - 🚧 Dropdown
