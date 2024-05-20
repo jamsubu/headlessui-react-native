@@ -89,6 +89,7 @@ export const DisclosurePanel = ({
 }: DisclosurePanelProps) => {
   const { onClose, isOpen } = useUIContext();
 
+  if (!isOpen) return null;
   return (
     <View accessibilityLabel={accessibilityLabel} {...rest}>
       <CallableChildren
