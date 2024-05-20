@@ -1,10 +1,18 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { View, ViewProps, PressableProps, Pressable } from "react-native";
-import { UIContext, useUIContext } from "./useUIContext";
+import {
+  RenderPropsCallableComponent,
+  UIContext,
+  useUIContext,
+} from "./useUIContext";
+import { CallableChildren } from "./callableChildren";
 
-type DisclosureProps = {
+export type DisclosureProps = {
   defaultOpen?: boolean;
-} & ViewProps;
+} & RenderPropsCallableComponent<
+  ViewProps,
+  { close: () => void; open: boolean }
+>;
 
 /**
  * The main disclosure component.
@@ -12,49 +20,65 @@ type DisclosureProps = {
 export const Disclosure = ({
   defaultOpen = false,
   accessibilityLabel = "Disclosure",
+  children,
   ...rest
 }: DisclosureProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  const onClose = () => setIsOpen(false);
+  const onOpen = () => setIsOpen(true);
+  const toggle = () => setIsOpen((prev) => !prev);
 
   return (
     <UIContext.Provider
       value={{
         isOpen,
-        onClose: () => setIsOpen(false),
-        onOpen: () => setIsOpen(true),
-        toggle: () => setIsOpen((prev) => !prev),
+        onClose,
+        onOpen,
+        toggle,
       }}
     >
-      <View accessibilityLabel={accessibilityLabel} {...rest} />
+      <View accessibilityLabel={accessibilityLabel} {...rest}>
+        <CallableChildren
+          children={children}
+          props={{ close: onClose, open: !!isOpen }}
+        />
+      </View>
     </UIContext.Provider>
   );
 };
+
+export type DisclosureButtonProps = RenderPropsCallableComponent<
+  PressableProps,
+  { open: boolean }
+>;
 
 /**
  * The trigger component that toggles a Disclosure.
  */
 export const DisclosureButton = ({
   accessibilityLabel = "Disclosure Button",
+  children,
   ...rest
-}: PressableProps) => {
-  const { toggle } = useUIContext();
+}: DisclosureButtonProps) => {
+  const { toggle, isOpen } = useUIContext();
 
   return (
     <Pressable
       accessibilityLabel={accessibilityLabel}
       {...rest}
       onPress={toggle}
-    />
+    >
+      <CallableChildren children={children} props={{ open: !!isOpen }} />
+    </Pressable>
   );
 };
 
-type DisclosurePanelProps = {
-  children:
-    | ReactNode
-    | ((props: {
-        close: ReturnType<typeof useUIContext>["onClose"];
-      }) => ReactNode);
-} & Omit<ViewProps, "children">;
+export type DisclosurePanelProps = RenderPropsCallableComponent<
+  ViewProps,
+  { close: () => void; open: boolean }
+>;
+
 /**
  * This component contains the contents of your disclosure.
  */
@@ -67,7 +91,10 @@ export const DisclosurePanel = ({
 
   return (
     <View accessibilityLabel={accessibilityLabel} {...rest}>
-      {typeof children === "function" ? children({ close: onClose }) : children}
+      <CallableChildren
+        children={children}
+        props={{ close: onClose, open: !!isOpen }}
+      />
     </View>
   );
 };

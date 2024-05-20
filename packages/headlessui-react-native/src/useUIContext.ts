@@ -1,14 +1,14 @@
-import { createContext, useContext } from "react";
+import { ReactNode, createContext, useContext } from "react";
+import { ViewProps, PressableProps } from "react-native";
 
-export const UIContext = createContext<
-  | {
-      onClose: () => void;
-      onOpen?: () => void;
-      toggle?: () => void;
-      isOpen?: boolean;
-    }
-  | undefined
->(undefined);
+type UIContextValue = {
+  onClose: () => void;
+  onOpen?: () => void;
+  toggle?: () => void;
+  isOpen?: boolean;
+};
+
+export const UIContext = createContext<UIContextValue | undefined>(undefined);
 
 export const useUIContext = () => {
   const context = useContext(UIContext);
@@ -17,3 +17,11 @@ export const useUIContext = () => {
   }
   return context;
 };
+
+export type RenderPropsCallableComponent<
+  T extends ViewProps | PressableProps,
+  /* props to return */
+  U extends unknown
+> = {
+  children: ReactNode | ((props: U) => ReactNode);
+} & Omit<T, "children">;
