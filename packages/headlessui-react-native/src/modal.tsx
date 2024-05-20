@@ -18,7 +18,7 @@ import { CallableChildren } from "./callableChildren";
 
 export type ModalProps = {
   onClose: () => void;
-  isOpen: boolean;
+  open: boolean;
 } & RenderPropsCallableComponent<
   RNModalProps,
   {
@@ -28,7 +28,7 @@ export type ModalProps = {
 
 /** The main modal component. */
 export const Modal = ({
-  isOpen,
+  open,
   onClose,
   accessibilityLabel = "Modal",
   children,
@@ -36,9 +36,9 @@ export const Modal = ({
   ...rest
 }: ModalProps) => {
   return (
-    <UIContext.Provider value={{ onClose, isOpen }}>
+    <UIContext.Provider value={{ onClose, open: open }}>
       <RNModal
-        visible={isOpen}
+        visible={open}
         onRequestClose={onClose}
         accessible
         accessibilityLabel={accessibilityLabel}
@@ -54,7 +54,7 @@ export const Modal = ({
           }}
           onPress={onClose}
         >
-          <CallableChildren children={children} props={{ open: !!isOpen }} />
+          <CallableChildren children={children} props={{ open: !!open }} />
         </Pressable>
       </RNModal>
     </UIContext.Provider>
@@ -76,12 +76,12 @@ export const ModalPanel = ({
   children,
   ...props
 }: ModalPanelProps) => {
-  const { isOpen } = useUIContext();
+  const { open } = useUIContext();
 
   const Rest = () => (
     <Pressable onPress={(e) => e.stopPropagation()} style={{ cursor: "auto" }}>
       <View {...props} onStartShouldSetResponder={() => true}>
-        <CallableChildren children={children} props={{ open: !!isOpen }} />
+        <CallableChildren children={children} props={{ open: !!open }} />
       </View>
     </Pressable>
   );
@@ -108,10 +108,10 @@ export const ModalTitle = ({
   children,
   ...props
 }: ModalTitleProps) => {
-  const { isOpen } = useUIContext();
+  const { open } = useUIContext();
   return (
     <Text accessibilityLabel={accessibilityLabel} {...props}>
-      <CallableChildren children={children} props={{ open: !!isOpen }} />
+      <CallableChildren children={children} props={{ open: !!open }} />
     </Text>
   );
 };

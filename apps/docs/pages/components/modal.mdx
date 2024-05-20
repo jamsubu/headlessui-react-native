@@ -18,7 +18,7 @@ Modals are built using the `Modal`, `ModalPanel`, and `ModalTitle` components:
 <iframe
   src={`${SHOWCASE_HOST}/components/modal`}
   width="100%"
-  height="500px"
+  height="400px"
 ></iframe>
 
 ```jsx file=<rootDir>/node_modules/headlessui-react-native-example-ui/src/modal/modal-example.tsx
@@ -31,7 +31,7 @@ Modals are built using the `Modal`, `ModalPanel`, and `ModalTitle` components:
 
 Modals are controlled components, meaning that you have to provide and manage the open state yourself using the `open` prop and the `onClose` callback.
 
-The `onClose` callback is called when an modal is dismissed, which happens when the user presses the Esc key or clicks outside the `ModalPanel`. In this callback set the `open` state back to `false` to close the modal.
+The `onClose` callback is called when an modal is dismissed, which happens when the user clicks outside the `ModalPanel`. In this callback set the `open` state back to `false` to close the modal.
 
 ```jsx
 import {  Modal, ModalPanel, ModalTitle } from 'headlessui-react-native'
@@ -55,7 +55,7 @@ function Example() {
 
         {/*
           You can render additional buttons to dismiss your
-          modal by setting `isOpen` to `false`.
+          modal by setting `open` to `false`.
         */}
         <Button title="Cancel" onPress={() => setIsOpen(false)}/>
         <Button title="Deactivate" onPress={handleDeactivate}/>
@@ -75,7 +75,9 @@ function Example() {
   return (
     <MyModal>
       {/* ... */}
-      <CloseButton>Cancel</CloseButton>
+      <CloseButton>
+        <Text>Cancel</Text>
+      </CloseButton>
     </MyModal>
   );
 }
@@ -86,7 +88,7 @@ function Example() {
 <iframe
   src={`${SHOWCASE_HOST}/components/modal/scrollable`}
   width="100%"
-  height="500px"
+  height="400px"
 ></iframe>
 
 ```jsx file=<rootDir>/node_modules/headlessui-react-native-example-ui/src/modal/scrollable-modal-example.tsx
@@ -97,17 +99,37 @@ function Example() {
 
 ### Modal
 
+The main modal component.
+
 | Prop      | Default | Description                                                                                                                                 |
 | :-------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------ |
-| `isOpen`  | `false` | `Boolean` Whether the Modal is open or not.                                                                                                 |
+| `open`    | `false` | `Boolean` Whether the modal is open or not.                                                                                                 |
 | `onClose` |         | Called when the `Modal` is dismissed (via outside click of the `ModalPanel`). Typically used to close the modal by setting `open` to false. |
+
+| Render Prop | Description                                 |
+| :---------- | :------------------------------------------ |
+| `open`      | `Boolean` Whether the modal is open or not. |
 
 ### ModalPanel
 
-| Prop         | Default | Description |
-| :----------- | :------ | :---------- |
-| `scrollable` | `false` |             |
+This indicates the panel of your actual Modal. Clicking outside of this component will trigger the `onClose` of the `Modal` component.
+
+| Prop         | Default | Description                                        |
+| :----------- | :------ | :------------------------------------------------- |
+| `scrollable` | `false` | Determines if the ModalPanel should be scrollable. |
+
+| Render Prop | Description                                 |
+| :---------- | :------------------------------------------ |
+| `open`      | `Boolean` Whether the modal is open or not. |
 
 ### ModalTitle
 
+This is the title for your Modal.
+
+| Render Prop | Description                                 |
+| :---------- | :------------------------------------------ |
+| `open`      | `Boolean` Whether the modal is open or not. |
+
 ### CloseButton
+
+This button will close the nearest `Modal` ancestor when clicked.

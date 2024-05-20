@@ -1,4 +1,5 @@
 import {
+  CloseButton,
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
@@ -56,20 +57,17 @@ const disclosureButtonStyle: ViewStyle = {
   justifyContent: "space-between",
 };
 const disclosureButtonTextStyle: TextStyle = { color: "white" };
-const disclosurePannelTextStyle: TextStyle = { color: "rgba(0,0,0,0.7)" };
+const disclosurePannelTextStyle: TextStyle = {
+  color: "rgba(0, 0, 0, 0.6)",
+};
 
 const Arrow = ({ rotate }: { rotate: boolean }) => (
-  <View
+  <Text
     style={{
-      width: 0,
-      height: 0,
-      borderStyle: "solid",
-      borderWidth: 6,
-      borderColor: "transparent",
-      borderTopWidth: 0,
-      borderBottomWidth: 10,
-      borderBottomColor: "white",
-      transform: [{ rotate: !rotate ? "180deg" : "0deg" }],
+      color: "white",
+      transform: [{ rotate: rotate ? "180deg" : "0deg" }],
     }}
-  />
+  >
+    ▼
+  </Text>
 );

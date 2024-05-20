@@ -7,7 +7,7 @@ export function ScrollableModalExample() {
   return (
     <View>
       <Button title="Open dialog" onPress={() => setIsOpen(true)} />
-      <Modal onClose={() => setIsOpen(false)} isOpen={isOpen}>
+      <Modal onClose={() => setIsOpen(false)} open={isOpen}>
         <View style={modalContainerStyle}>
           <ModalPanel scrollable style={modalPanelStyle}>
             <ModalTitle style={modalTitleStyle}>Payment successful</ModalTitle>

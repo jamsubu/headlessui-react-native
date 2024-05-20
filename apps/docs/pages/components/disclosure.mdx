@@ -1,0 +1,93 @@
+import { SHOWCASE_HOST } from "@/constants";
+import React from "react";
+
+# Disclosure
+
+## Installation
+
+To get started, install Headless UI via npm:
+
+```
+npm install headlessui-react-native
+```
+
+## Basic example
+
+Modals are built using the `Disclosure`, `DisclosureButton`, and `DisclosurePanel` components.
+The button will automatically open/close the panel when clicked.
+
+<iframe
+  src={`${SHOWCASE_HOST}/components/disclosure`}
+  width="100%"
+  height="400px"
+></iframe>
+
+```jsx file=<rootDir>/node_modules/headlessui-react-native-example-ui/src/disclosure/disclosure-example.tsx
+
+```
+
+## Examples
+
+### Closing disclosures manually
+
+To close a disclosure manually when clicking a child of its panel, render that child as a `CloseButton`.
+
+```jsx
+import {
+  CloseButton,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "headlessui-react-native";
+import React from "react";
+import { Text } from "react-native";
+
+function Example() {
+  return (
+    <Disclosure defaultOpen>
+      <DisclosureButton>Open mobile menu</DisclosureButton>
+      <DisclosurePanel>
+        <CloseButton>
+          <Text>Home</Text>
+        </CloseButton>
+      </DisclosurePanel>
+    </Disclosure>
+  );
+}
+```
+
+## Component API
+
+### Disclosure
+
+The main disclosure component.
+
+| Prop          | Default | Description                                                                    |
+| :------------ | :------ | :----------------------------------------------------------------------------- |
+| `defaultOpen` | `false` | `Boolean` Whether or not the `Disclosure` component should be open by default. |
+
+| Render Prop | Description                                      |
+| :---------- | :----------------------------------------------- |
+| `open`      | `Boolean` Whether the disclosure is open or not. |
+| `close`     | `() => void` Closes the disclosure.              |
+
+### DisclosureButton
+
+The trigger component that toggles a Disclosure.
+
+| Render Prop | Description                                      |
+| :---------- | :----------------------------------------------- |
+| `open`      | `Boolean` Whether the disclosure is open or not. |
+
+### DisclosurePanel
+
+This component contains the contents of your disclosure.
+
+| Render Prop | Description                                      |
+| :---------- | :----------------------------------------------- |
+| `open`      | `Boolean` Whether the disclosure is open or not. |
+| `close`     | `() => void` Closes the disclosure.              |
+
+### CloseButton
+
+This button will close the nearest `Disclosure` ancestor when clicked.

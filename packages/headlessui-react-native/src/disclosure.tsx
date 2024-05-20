@@ -32,7 +32,7 @@ export const Disclosure = ({
   return (
     <UIContext.Provider
       value={{
-        isOpen,
+        open: isOpen,
         onClose,
         onOpen,
         toggle,
@@ -61,7 +61,7 @@ export const DisclosureButton = ({
   children,
   ...rest
 }: DisclosureButtonProps) => {
-  const { toggle, isOpen } = useUIContext();
+  const { toggle, open } = useUIContext();
 
   return (
     <Pressable
@@ -69,7 +69,7 @@ export const DisclosureButton = ({
       {...rest}
       onPress={toggle}
     >
-      <CallableChildren children={children} props={{ open: !!isOpen }} />
+      <CallableChildren children={children} props={{ open: !!open }} />
     </Pressable>
   );
 };
@@ -87,14 +87,14 @@ export const DisclosurePanel = ({
   accessibilityLabel = "Disclosure Panel",
   ...rest
 }: DisclosurePanelProps) => {
-  const { onClose, isOpen } = useUIContext();
+  const { onClose, open } = useUIContext();
 
-  if (!isOpen) return null;
+  if (!open) return null;
   return (
     <View accessibilityLabel={accessibilityLabel} {...rest}>
       <CallableChildren
         children={children}
-        props={{ close: onClose, open: !!isOpen }}
+        props={{ close: onClose, open: !!open }}
       />
     </View>
   );

@@ -5,7 +5,7 @@ type UIContextValue = {
   onClose: () => void;
   onOpen?: () => void;
   toggle?: () => void;
-  isOpen?: boolean;
+  open?: boolean;
 };
 
 export const UIContext = createContext<UIContextValue | undefined>(undefined);
