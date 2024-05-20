@@ -1,20 +1,9 @@
-import React, { createContext, useContext, useState } from "react";
-import { View, ViewProps } from "react-native";
-
-const DisclosureContext = createContext<
-  { onClose: () => void; isOpen: boolean } | undefined
->(undefined);
-
-const useDisclosure = () => {
-  const context = useContext(DisclosureContext);
-  if (!context) {
-    throw new Error("useDisclosure must be used within a ModalProvider");
-  }
-  return context;
-};
+import React, { ReactNode, useState } from "react";
+import { View, ViewProps, PressableProps, Pressable } from "react-native";
+import { UIContext, useUIContext } from "./useUIContext";
 
 type DisclosureProps = {
-  defaultOpen: boolean;
+  defaultOpen?: boolean;
 } & ViewProps;
 
 /**
@@ -22,27 +11,63 @@ type DisclosureProps = {
  */
 export const Disclosure = ({
   defaultOpen = false,
+  accessibilityLabel = "Disclosure",
   ...rest
 }: DisclosureProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <DisclosureContext.Provider
-      value={{ isOpen, onClose: () => setIsOpen(false) }}
+    <UIContext.Provider
+      value={{
+        isOpen,
+        onClose: () => setIsOpen(false),
+        onOpen: () => setIsOpen(true),
+        toggle: () => setIsOpen((prev) => !prev),
+      }}
     >
-      <View {...rest} />
-    </DisclosureContext.Provider>
+      <View accessibilityLabel={accessibilityLabel} {...rest} />
+    </UIContext.Provider>
   );
 };
 
 /**
  * The trigger component that toggles a Disclosure.
  */
-export const DisclosureButton = () => <View></View>;
+export const DisclosureButton = ({
+  accessibilityLabel = "Disclosure Button",
+  ...rest
+}: PressableProps) => {
+  const { toggle } = useUIContext();
+
+  return (
+    <Pressable
+      accessibilityLabel={accessibilityLabel}
+      {...rest}
+      onPress={toggle}
+    />
+  );
+};
+
+type DisclosurePanelProps = {
+  children:
+    | ReactNode
+    | ((props: {
+        close: ReturnType<typeof useUIContext>["onClose"];
+      }) => ReactNode);
+} & Omit<ViewProps, "children">;
 /**
  * This component contains the contents of your disclosure.
  */
-export const DisclosurePanel = () => {
-  const { isOpen } = useDisclosure();
-  return <View>is Open?{isOpen}</View>;
+export const DisclosurePanel = ({
+  children,
+  accessibilityLabel = "Disclosure Panel",
+  ...rest
+}: DisclosurePanelProps) => {
+  const { onClose, isOpen } = useUIContext();
+
+  return (
+    <View accessibilityLabel={accessibilityLabel} {...rest}>
+      {typeof children === "function" ? children({ close: onClose }) : children}
+    </View>
+  );
 };

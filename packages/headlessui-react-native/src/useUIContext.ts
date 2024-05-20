@@ -1,8 +1,14 @@
 import { createContext, useContext } from "react";
 
-export const UIContext = createContext<{ onClose: () => void } | undefined>(
-  undefined
-);
+export const UIContext = createContext<
+  | {
+      onClose: () => void;
+      onOpen?: () => void;
+      toggle?: () => void;
+      isOpen?: boolean;
+    }
+  | undefined
+>(undefined);
 
 export const useUIContext = () => {
   const context = useContext(UIContext);

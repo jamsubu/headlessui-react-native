@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "react-native";
+import { Pressable, PressableProps } from "react-native";
 
 import React from "react";
 import { useUIContext } from "./useUIContext";
@@ -6,11 +6,11 @@ import { useUIContext } from "./useUIContext";
 export const CloseButton = ({
   accessibilityLabel = "Close Button",
   ...props
-}: ButtonProps) => {
+}: PressableProps) => {
   const { onClose } = useUIContext();
 
   return (
-    <Button
+    <Pressable
       onPress={onClose}
       accessibilityLabel={accessibilityLabel}
       {...props}
