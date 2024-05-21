@@ -7,7 +7,7 @@ Headlessui React Native
 
 <p align="center">
 <a href="https://www.npmjs.com/package/headlessui-react-native"><img src="https://img.shields.io/npm/dt/headlessui-react-native" alt="Total Downloads"></a>
-  <a href="https://github.com/jamsubu/headlessui-react-native/tree/main/packages/headlessui-react-native"><img src="https://img.shields.io/npm/v/headlessui-react-native" alt="Latest Release"></a>
+  <a href="https://github.com/jamsubu/headlessui-react-native/releases"><img src="https://img.shields.io/npm/v/headlessui-react-native" alt="Latest Release"></a>
 </p>
 
 ## Installation
