@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { View, ViewProps, PressableProps, Pressable } from "react-native";
-import {
-  RenderPropsCallableComponent,
-  UIContext,
-  useUIContext,
-} from "./useUIContext";
+import { UIContext, useUIContext } from "./useUIContext";
 import { CallableChildren } from "./callableChildren";
+import { RenderPropsCallableComponent } from "./types";
 
 export type DisclosureProps = {
   defaultOpen?: boolean;
