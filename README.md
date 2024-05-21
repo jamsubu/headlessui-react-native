@@ -1,16 +1,24 @@
-<h1 align="center">
+<h3 align="center">
 Headlessui React Native
-</h1>
+</h3>
 
-This is an unstyled, accessible headless UI library for React Native.
+<p align="center">This is an unstyled, accessible headless UI library for React Native. If you have nativewind installed, you can also use tailwind. 
+</p>
 
-If you have nativewind installed, you can also use tailwind. Visit following website to see the full API documentation https://headlessui-react-native.vercel.app
+<p align="center">
+<a href="https://www.npmjs.com/package/headlessui-react-native"><img src="https://img.shields.io/npm/dt/headlessui-react-native" alt="Total Downloads"></a>
+  <a href="https://github.com/jamsubu/headlessui-react-native/tree/main/packages/headlessui-react-native"><img src="https://img.shields.io/npm/v/headlessui-react-native" alt="Latest Release"></a>
+</p>
 
-## Package
+## Installation
 
-| Name                                                                                                                       |                                                            Version                                                            |                                                            Downloads                                                             |
-| :------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------: |
-| [`headlessui-react-native`](https://github.com/jamsubu/headlessui-react-native/tree/main/packages/headlessui-react-native) | [![npm version](https://img.shields.io/npm/v/headlessui-react-native)](https://www.npmjs.com/package/headlessui-react-native) | [![npm downloads](https://img.shields.io/npm/dt/headlessui-react-native)](https://www.npmjs.com/package/headlessui-react-native) |
+```sh
+npm install headlessui-react-native
+```
+
+## Documentation
+
+Visit following website to see the full API documentation https://headlessui-react-native.vercel.app
 
 ## Goals
 

@@ -1,6 +1,8 @@
 {
   "name": "headlessui-react-native-monorepo",
   "private": true,
+  "repository": "https://github.com/jamsubu/headlessui-react-native",
+  "license": "MIT",
   "scripts": {
     "dev": "turbo dev",
     "lint": "turbo lint"
