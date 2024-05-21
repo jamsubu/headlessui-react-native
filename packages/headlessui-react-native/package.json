@@ -34,7 +34,7 @@
   },
   "scripts": {
     "dev": "concurrently \"swc ./src -d ./dist --watch\" \"tsc -w\"",
-    "build": "swc ./src -d ./dist && tsc",
+    "build": "swc ./src -d ./dist && tsc && cp ../../README.md .",
     "prepublishOnly": "yarn build"
   }
 }

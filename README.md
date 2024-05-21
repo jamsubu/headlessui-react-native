@@ -1,8 +1,16 @@
-# Headlessui React Native
+<h1 align="center">
+Headlessui React Native
+</h1>
 
 This is an unstyled, accessible headless UI library for React Native.
 
 If you have nativewind installed, you can also use tailwind. Visit following website to see the full API documentation https://headlessui-react-native.vercel.app
+
+## Package
+
+| Name                                                                                                                       |                                                            Version                                                            |                                                            Downloads                                                             |
+| :------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------: |
+| [`headlessui-react-native`](https://github.com/jamsubu/headlessui-react-native/tree/main/packages/headlessui-react-native) | [![npm version](https://img.shields.io/npm/v/headlessui-react-native)](https://www.npmjs.com/package/headlessui-react-native) | [![npm downloads](https://img.shields.io/npm/dt/headlessui-react-native)](https://www.npmjs.com/package/headlessui-react-native) |
 
 ## Goals
 
