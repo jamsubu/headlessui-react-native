@@ -1,16 +1,15 @@
 import {
-  CloseButton,
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
 } from "headlessui-react-native";
 import React from "react";
-import { View, Text, ViewStyle, TextStyle } from "react-native";
+import { Text, TextStyle, View, ViewStyle } from "react-native";
 
 export function DisclosureExample() {
   return (
     <View>
-      <Disclosure style={disclosureStyle}>
+      <Disclosure style={disclosureStyle} as="View">
         <DisclosureButton style={disclosureButtonStyle}>
           {({ open }) => (
             <>
@@ -27,7 +26,7 @@ export function DisclosureExample() {
           </Text>
         </DisclosurePanel>
       </Disclosure>
-      <Disclosure style={disclosureStyle}>
+      <Disclosure style={disclosureStyle} as="View">
         <DisclosureButton style={disclosureButtonStyle}>
           {({ open }) => (
             <>

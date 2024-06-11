@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { View, ViewProps, PressableProps, Pressable } from "react-native";
-import { UIContext, useUIContext } from "./useUIContext";
-import { CallableChildren } from "./callableChildren";
-import { RenderPropsCallableComponent } from "./types";
+import { Pressable, PressableProps, Text, View, ViewProps } from "react-native";
+import {
+  PropsType,
+  ReactNativeComponentProps,
+  ReactNativeComponentType,
+  RenderPropsCallableComponent,
+} from "../constants";
+import { UIContext, useUIContext } from "../hooks";
+import { createReactNativeElement } from "../utils";
+import { CallableChildren } from "./callable-children";
+import { Menu } from "./dropdown-menu";
 
 export type DisclosureProps = {
   defaultOpen?: boolean;
@@ -40,6 +47,9 @@ export const Disclosure = ({
           children={children}
           props={{ close: onClose, open: !!isOpen }}
         />
+        <Menu as="Pressable">
+          <Text>dsasda</Text>
+        </Menu>
       </View>
     </UIContext.Provider>
   );
@@ -96,3 +106,28 @@ export const DisclosurePanel = ({
     </View>
   );
 };
+
+export const ExmapleDisclosurePanel = <
+  T extends ReactNativeComponentType = "View"
+>({
+  as = "View" as T,
+  children,
+  ...props
+}: ReactNativeComponentProps<T>) => {
+  const { onClose, open } = useUIContext();
+
+  if (!open) return null;
+
+  const Component = createReactNativeElement(
+    as,
+    { ...(props as PropsType<T>), onPress: onClose },
+    <CallableChildren
+      children={children}
+      props={{ close: onClose, open: !!open }}
+    />
+  );
+
+  return Component;
+};
+
+<ExmapleDisclosurePanel>{}</ExmapleDisclosurePanel>;

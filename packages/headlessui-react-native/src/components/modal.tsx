@@ -9,9 +9,9 @@ import {
   View,
   ViewProps,
 } from "react-native";
-import { UIContext, useUIContext } from "./useUIContext";
-import { CallableChildren } from "./callableChildren";
-import { RenderPropsCallableComponent } from "./types";
+import { RenderPropsCallableComponent } from "../constants";
+import { UIContext, useUIContext } from "../hooks";
+import { CallableChildren } from "./callable-children";
 
 export type ModalProps = {
   onClose: () => void;
