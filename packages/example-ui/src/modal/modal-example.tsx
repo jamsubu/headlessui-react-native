@@ -16,15 +16,6 @@ export function ModalExample() {
       <Button title="Open dialog" onPress={() => setIsOpen(true)} />
       <Modal onClose={() => setIsOpen(false)} open={isOpen}>
         <View style={modalContainerStyle}>
-          {/* The backdrop, rendered as a fixed sibling to the panel container */}
-          <View
-            style={{
-              width: "100%",
-              height: "100%",
-              position: "absolute",
-              cursor: "pointer",
-            }}
-          />
           <ModalPanel style={modalPanelStyle}>
             <ModalTitle style={modalTitleStyle}>Payment successful</ModalTitle>
             <View style={modalPanelContentStyle}>
@@ -47,6 +38,7 @@ const modalContainerStyle: ViewStyle = {
   justifyContent: "center",
   padding: 40,
   cursor: "auto",
+  /** backdrop color */
   backgroundColor: "rgba(0, 0, 0, 0.5)",
 };
 const modalPanelStyle = {
