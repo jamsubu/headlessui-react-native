@@ -26,7 +26,9 @@ The goal of this project is to provide React Native developers with a seamless e
 
 ## Non-Goals
 
-It's important to note that this project does not aim to support every feature. For instance, regarding the "as" property, which allows manipulation of tags, it's not feasible to replace tags due to accessibility issues and the varying behavior of React Native components. However, partial compatibility is supported in some cases. For example, while the default for "modalContent" is View, it can be changed to ScrollView.
+It's important to note that this project does not aim to support every feature of [Headless UI](https://headlessui.com). For instance, regarding the "as" property, it can generally be used to change to other React Native components. However, components like Modals, which have predefined roles and encapsulate the entire modal, cannot be changed using the `as` property.
+
+This revision keeps the original intent while ensuring clarity and coherence in English.
 
 ## Supporting Features (🚧 => working on..)
 
