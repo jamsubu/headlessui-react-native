@@ -1,6 +1,13 @@
 import { Modal, ModalPanel, ModalTitle } from "headlessui-react-native";
 import React, { useState } from "react";
-import { Button, Text, TextStyle, View, ViewStyle } from "react-native";
+import {
+  Button,
+  Pressable,
+  Text,
+  TextStyle,
+  View,
+  ViewStyle,
+} from "react-native";
 
 export function ModalExample() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +16,15 @@ export function ModalExample() {
       <Button title="Open dialog" onPress={() => setIsOpen(true)} />
       <Modal onClose={() => setIsOpen(false)} open={isOpen}>
         <View style={modalContainerStyle}>
+          {/* The backdrop, rendered as a fixed sibling to the panel container */}
+          <View
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              cursor: "pointer",
+            }}
+          />
           <ModalPanel style={modalPanelStyle}>
             <ModalTitle style={modalTitleStyle}>Payment successful</ModalTitle>
             <View style={modalPanelContentStyle}>
@@ -24,13 +40,13 @@ export function ModalExample() {
     </View>
   );
 }
-
 const modalContainerStyle: ViewStyle = {
   width: "100%",
   height: "100%",
   alignItems: "center",
   justifyContent: "center",
   padding: 40,
+  cursor: "auto",
   backgroundColor: "rgba(0, 0, 0, 0.5)",
 };
 const modalPanelStyle = {

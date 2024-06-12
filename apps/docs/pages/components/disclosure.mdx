@@ -62,9 +62,10 @@ function Example() {
 
 The main disclosure component.
 
-| Prop          | Default | Description                                                                    |
-| :------------ | :------ | :----------------------------------------------------------------------------- |
-| `defaultOpen` | `false` | `Boolean` Whether or not the `Disclosure` component should be open by default. |
+| Prop          | Default    | Description                                                                    |
+| :------------ | :--------- | :----------------------------------------------------------------------------- |
+| `as`          | `Fragment` | `String` The element the disclosure should render as.                          |
+| `defaultOpen` | `false`    | `Boolean` Whether or not the `Disclosure` component should be open by default. |
 
 | Render Prop | Description                                      |
 | :---------- | :----------------------------------------------- |
@@ -75,6 +76,10 @@ The main disclosure component.
 
 The trigger component that toggles a Disclosure.
 
+| Prop | Default     | Description                                                  |
+| :--- | :---------- | :----------------------------------------------------------- |
+| `as` | `Pressable` | `String` The element the disclosure button should render as. |
+
 | Render Prop | Description                                      |
 | :---------- | :----------------------------------------------- |
 | `open`      | `Boolean` Whether the disclosure is open or not. |
@@ -82,6 +87,10 @@ The trigger component that toggles a Disclosure.
 ### DisclosurePanel
 
 This component contains the contents of your disclosure.
+
+| Prop | Default | Description                                                 |
+| :--- | :------ | :---------------------------------------------------------- |
+| `as` | `View`  | `String` The element the disclosure panel should render as. |
 
 | Render Prop | Description                                      |
 | :---------- | :----------------------------------------------- |
@@ -91,3 +100,7 @@ This component contains the contents of your disclosure.
 ### CloseButton
 
 This button will close the nearest `Disclosure` ancestor when clicked.
+
+| Prop | Default     | Description                                             |
+| :--- | :---------- | :------------------------------------------------------ |
+| `as` | `Pressable` | `String` The element the close button should render as. |

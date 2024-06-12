@@ -3,15 +3,15 @@ import {
   Pressable,
   Modal as RNModal,
   ModalProps as RNModalProps,
-  ScrollView,
-  Text,
-  TextProps,
-  View,
-  ViewProps,
 } from "react-native";
-import { RenderPropsCallableComponent } from "../constants";
+import {
+  ReactNativeComponentPropsType,
+  ReactNativeComponentType,
+  RenderPropsCallableComponent,
+} from "../constants";
 import { UIContext, useUIContext } from "../hooks";
 import { CallableChildren } from "./callable-children";
+import { createReactNativeElement } from "../utils";
 
 export type ModalProps = {
   onClose: () => void;
@@ -27,7 +27,6 @@ export type ModalProps = {
 export const Modal = ({
   open,
   onClose,
-  accessibilityLabel = "Modal",
   children,
   transparent = true,
   ...rest
@@ -38,19 +37,10 @@ export const Modal = ({
         visible={open}
         onRequestClose={onClose}
         accessible
-        accessibilityLabel={accessibilityLabel}
         transparent
         {...rest}
       >
-        <Pressable
-          style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "auto",
-          }}
-          onPress={onClose}
-        >
+        <Pressable style={{ flex: 1, cursor: "auto" }} onPress={onClose}>
           <CallableChildren children={children} props={{ open: !!open }} />
         </Pressable>
       </RNModal>
@@ -58,57 +48,42 @@ export const Modal = ({
   );
 };
 
-export type ModalPanelProps = {
-  scrollable?: boolean;
-} & RenderPropsCallableComponent<
-  ViewProps,
-  {
-    open: boolean;
-  }
->;
+const ModalPanelDefaultComponent = "View" as const;
 /** This indicates the panel of your actual Modal. Clicking outside of this component will trigger the onClose of the Modal component. */
-export const ModalPanel = ({
-  accessibilityLabel = "Modal Panel",
-  scrollable,
+export const ModalPanel = <
+  T extends ReactNativeComponentType = typeof ModalPanelDefaultComponent
+>({
+  as = ModalPanelDefaultComponent as T,
   children,
-  ...props
-}: ModalPanelProps) => {
+  ...rest
+}: ReactNativeComponentPropsType<T, { open: boolean }>) => {
   const { open } = useUIContext();
+  const Component = createReactNativeElement(as);
 
-  const Rest = () => (
+  return (
     <Pressable onPress={(e) => e.stopPropagation()} style={{ cursor: "auto" }}>
-      <View {...props} onStartShouldSetResponder={() => true}>
+      <Component {...rest} onStartShouldSetResponder={() => true}>
         <CallableChildren children={children} props={{ open: !!open }} />
-      </View>
+      </Component>
     </Pressable>
-  );
-
-  return scrollable ? (
-    <ScrollView style={{ overflow: "scroll" }}>
-      <Rest />
-    </ScrollView>
-  ) : (
-    <Rest />
   );
 };
 
-export type ModalTitleProps = RenderPropsCallableComponent<
-  TextProps,
-  {
-    open: boolean;
-  }
->;
-
+const ModalTitleDefaultComponent = "Text" as const;
 /** This is the title for your Modal */
-export const ModalTitle = ({
-  accessibilityLabel = "Modal Title",
+export const ModalTitle = <
+  T extends ReactNativeComponentType = typeof ModalTitleDefaultComponent
+>({
+  as = ModalTitleDefaultComponent as T,
   children,
-  ...props
-}: ModalTitleProps) => {
+  ...rest
+}: ReactNativeComponentPropsType<T, { open: boolean }>) => {
   const { open } = useUIContext();
+  const Component = createReactNativeElement(as);
+
   return (
-    <Text accessibilityLabel={accessibilityLabel} {...props}>
+    <Component {...rest}>
       <CallableChildren children={children} props={{ open: !!open }} />
-    </Text>
+    </Component>
   );
 };

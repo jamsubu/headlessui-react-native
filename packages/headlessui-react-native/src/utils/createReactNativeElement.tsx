@@ -1,21 +1,8 @@
-import React, { ReactNode } from "react";
-import {
-  COMPONENT_MAP,
-  PropsType,
-  ReactNativeComponentType,
-} from "../constants";
-
+import React from "react";
+import { COMPONENT_MAP, ReactNativeComponentType } from "../constants";
 export function createReactNativeElement<T extends ReactNativeComponentType>(
-  type: T,
-  props?: PropsType<T>,
-  children?: ReactNode
+  as: T
 ) {
-  const Component = COMPONENT_MAP[type];
-
-  return React.createElement(
-    // @ts-ignore
-    Component,
-    props,
-    children
-  );
+  const Component = COMPONENT_MAP[as] as React.ComponentClass<any>;
+  return Component;
 }

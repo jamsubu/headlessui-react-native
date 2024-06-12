@@ -99,7 +99,7 @@ function Example() {
 
 ### Modal
 
-The main modal component.
+The main modal component. This has predefined roles, so it `cannot be rendered as another component` using the `as` prop.
 
 | Prop      | Default | Description                                                                                                                                 |
 | :-------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -114,9 +114,9 @@ The main modal component.
 
 This indicates the panel of your actual Modal. Clicking outside of this component will trigger the `onClose` of the `Modal` component.
 
-| Prop         | Default | Description                                        |
-| :----------- | :------ | :------------------------------------------------- |
-| `scrollable` | `false` | Determines if the ModalPanel should be scrollable. |
+| Prop | Default | Description                                            |
+| :--- | :------ | :----------------------------------------------------- |
+| `as` | `View`  | `String` The element the modal panel should render as. |
 
 | Render Prop | Description                                 |
 | :---------- | :------------------------------------------ |
@@ -126,6 +126,10 @@ This indicates the panel of your actual Modal. Clicking outside of this componen
 
 This is the title for your Modal.
 
+| Prop | Default | Description                                            |
+| :--- | :------ | :----------------------------------------------------- |
+| `as` | `Text`  | `String` The element the modal title should render as. |
+
 | Render Prop | Description                                 |
 | :---------- | :------------------------------------------ |
 | `open`      | `Boolean` Whether the modal is open or not. |
@@ -133,3 +137,6 @@ This is the title for your Modal.
 ### CloseButton
 
 This button will close the nearest `Modal` ancestor when clicked.
+| Prop | Default | Description |
+| :--- | :---------- | :------------------------------------------------------ |
+| `as` | `Pressable` | `String` The element the close button should render as. |

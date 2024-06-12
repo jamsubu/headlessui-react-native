@@ -1,22 +1,20 @@
+import React from "react";
 import {
-  PropsType,
-  ReactNativeComponentProps,
+  ReactNativeComponentPropsType,
   ReactNativeComponentType,
 } from "../constants";
 import { useUIContext } from "../hooks";
 import { createReactNativeElement } from "../utils";
 
-export const CloseButton = <T extends ReactNativeComponentType = "Pressable">({
-  as = "Pressable" as T,
+const CloseButtonDefaultComponent = "Pressable" as const;
+export const CloseButton = <
+  T extends ReactNativeComponentType = typeof CloseButtonDefaultComponent
+>({
+  as = CloseButtonDefaultComponent as T,
   children,
-  ...props
-}: ReactNativeComponentProps<T>) => {
+  ...rest
+}: ReactNativeComponentPropsType<T>) => {
   const { onClose } = useUIContext();
-  const Component = createReactNativeElement(
-    as,
-    { ...(props as PropsType<T>), onPress: onClose },
-    children
-  );
-
-  return Component;
+  const Component = createReactNativeElement(as);
+  return <Component onPress={onClose} {...rest} />;
 };

@@ -1,3 +1,4 @@
+import React, { Fragment } from "react";
 import {
   ActivityIndicator,
   Button,
@@ -25,6 +26,7 @@ import {
 } from "react-native";
 
 export const COMPONENT_MAP = {
+  Fragment,
   ActivityIndicator,
   Button,
   FlatList,
@@ -49,3 +51,5 @@ export const COMPONENT_MAP = {
   TouchableNativeFeedback,
   InputAccessoryView,
 };
+
+export type ComponentMap = typeof COMPONENT_MAP;
