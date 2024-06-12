@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { Pressable, PressableProps, Text, View, ViewProps } from "react-native";
 import {
   ReactNativeComponentPropsType,
   ReactNativeComponentType,
-  RenderPropsCallableComponent,
 } from "../constants";
 import { UIContext, useUIContext } from "../hooks";
 import { createReactNativeElement } from "../utils";
