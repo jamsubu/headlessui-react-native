@@ -1,13 +1,6 @@
 import { Modal, ModalPanel, ModalTitle } from "headlessui-react-native";
 import React, { useState } from "react";
-import {
-  Button,
-  Pressable,
-  Text,
-  TextStyle,
-  View,
-  ViewStyle,
-} from "react-native";
+import { Button, Text, TextStyle, View, ViewStyle } from "react-native";
 
 export function ModalExample() {
   const [isOpen, setIsOpen] = useState(false);
