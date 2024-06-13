@@ -54,7 +54,9 @@ export const ModalPanel = <
   ...rest
 }: ReactNativeComponentPropsType<T, { open: boolean }>) => {
   const { open } = useUIContext();
-  const Component = createReactNativeElement(as);
+  const Component = createReactNativeElement(
+    as as typeof ModalPanelDefaultComponent
+  );
 
   return (
     <Pressable onPress={(e) => e.stopPropagation()} style={{ cursor: "auto" }}>
@@ -75,7 +77,9 @@ export const ModalTitle = <
   ...rest
 }: ReactNativeComponentPropsType<T, { open: boolean }>) => {
   const { open } = useUIContext();
-  const Component = createReactNativeElement(as);
+  const Component = createReactNativeElement(
+    as as typeof ModalTitleDefaultComponent
+  );
 
   return (
     <Component {...rest}>

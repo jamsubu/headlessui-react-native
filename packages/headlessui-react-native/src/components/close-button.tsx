@@ -15,6 +15,8 @@ export const CloseButton = <
   ...rest
 }: ReactNativeComponentPropsType<T>) => {
   const { onClose } = useUIContext();
-  const Component = createReactNativeElement(as);
+  const Component = createReactNativeElement(
+    as as typeof CloseButtonDefaultComponent
+  );
   return <Component onPress={onClose} {...rest} />;
 };

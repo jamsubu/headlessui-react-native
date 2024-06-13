@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import {
-  ReactNativeComponentType,
-  ReactNativeComponentPropsType,
-} from "../constants";
+import { ReactNativeComponentPropsType } from "../constants";
 import { UIContext } from "../hooks";
 import { createReactNativeElement } from "../utils";
 import { CallableChildren } from "./callable-children";
 
-const InputDefaultComponent = "TextInput" as const;
 /**
  * The main input component.
  */

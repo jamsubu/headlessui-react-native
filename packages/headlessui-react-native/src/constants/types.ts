@@ -7,6 +7,6 @@ export type ReactNativeComponentPropsType<
   T extends ReactNativeComponentType,
   U = unknown
 > = Omit<ComponentProps<ComponentMap[T]>, "children"> & {
-  children: ReactNode | ((props: U) => ReactNode);
+  children?: ReactNode | ((props: U) => ReactNode);
   as?: T;
 };

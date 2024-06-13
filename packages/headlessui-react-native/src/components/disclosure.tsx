@@ -17,6 +17,7 @@ export const Disclosure = <
   as = DisclosureDefaultComponent as T,
   children,
   defaultOpen = false,
+
   ...rest
 }: ReactNativeComponentPropsType<T, { open: boolean; close?: () => void }> & {
   defaultOpen?: boolean;
@@ -27,7 +28,9 @@ export const Disclosure = <
   const onOpen = () => setIsOpen(true);
   const toggle = () => setIsOpen((prev) => !prev);
 
-  const Component = createReactNativeElement(as);
+  const Component = createReactNativeElement(
+    as as typeof DisclosureDefaultComponent
+  );
 
   return (
     <UIContext.Provider
@@ -60,7 +63,9 @@ export const DisclosureButton = <
   ...rest
 }: ReactNativeComponentPropsType<T, { open: boolean }>) => {
   const { toggle, open } = useUIContext();
-  const Component = createReactNativeElement(as);
+  const Component = createReactNativeElement(
+    as as typeof DisclosureButtonDefaultComponent
+  );
 
   return (
     <Component {...rest} onPress={toggle}>
@@ -81,7 +86,9 @@ export const DisclosurePanel = <
   ...rest
 }: ReactNativeComponentPropsType<T, { open: boolean; close?: () => void }>) => {
   const { onClose, open } = useUIContext();
-  const Component = createReactNativeElement(as);
+  const Component = createReactNativeElement(
+    as as typeof DisclosurePanelDefaultComponent
+  );
 
   if (!open) return null;
   return (
