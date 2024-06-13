@@ -1,10 +1,13 @@
 import { createContext, useContext } from "react";
 
 type UIContextValue = {
-  onClose: () => void;
+  onClose?: () => void;
   onOpen?: () => void;
   toggle?: () => void;
   open?: boolean;
+  invalid?: boolean;
+  disabled?: boolean;
+  autoFocus?: boolean;
 };
 
 export const UIContext = createContext<UIContextValue | undefined>(undefined);

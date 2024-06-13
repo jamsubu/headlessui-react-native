@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import {
   Pressable,
   Modal as RNModal,
@@ -7,21 +7,17 @@ import {
 import {
   ReactNativeComponentPropsType,
   ReactNativeComponentType,
-  RenderPropsCallableComponent,
 } from "../constants";
 import { UIContext, useUIContext } from "../hooks";
 import { CallableChildren } from "./callable-children";
 import { createReactNativeElement } from "../utils";
 
 export type ModalProps = {
-  onClose: () => void;
-  open: boolean;
-} & RenderPropsCallableComponent<
-  RNModalProps,
-  {
+  children: ReactNode | ((props: { open: boolean }) => ReactNode);
+} & Omit<RNModalProps, "children"> & {
+    onClose: () => void;
     open: boolean;
-  }
->;
+  };
 
 /** The main modal component. */
 export const Modal = ({

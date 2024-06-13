@@ -18,7 +18,7 @@ export const Disclosure = <
   children,
   defaultOpen = false,
   ...rest
-}: ReactNativeComponentPropsType<T, { open: boolean; close: () => void }> & {
+}: ReactNativeComponentPropsType<T, { open: boolean; close?: () => void }> & {
   defaultOpen?: boolean;
 }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
@@ -79,7 +79,7 @@ export const DisclosurePanel = <
   as = DisclosurePanelDefaultComponent as T,
   children,
   ...rest
-}: ReactNativeComponentPropsType<T, { open: boolean; close: () => void }>) => {
+}: ReactNativeComponentPropsType<T, { open: boolean; close?: () => void }>) => {
   const { onClose, open } = useUIContext();
   const Component = createReactNativeElement(as);
 
