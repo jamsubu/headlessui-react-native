@@ -2,7 +2,7 @@
   "name": "headlessui-react-native",
   "title": "HeadlessUI React Native",
   "description": "This is an unstyled, accessible headless UI library for React Native.",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "homepage": "https://headlessui-react-native.vercel.app",
