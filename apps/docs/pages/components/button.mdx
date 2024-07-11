@@ -1,0 +1,58 @@
+import { SHOWCASE_HOST } from "@/constants";
+import React from "react";
+
+# Button
+
+## Installation
+
+To get started, install Headless UI via npm:
+
+```
+npm install headlessui-react-native
+```
+
+## Basic example
+
+Buttons are built using the `Button` component:
+
+<iframe
+  src={`${SHOWCASE_HOST}/components/button`}
+  width="100%"
+  height="400px"
+></iframe>
+
+```jsx file=<rootDir>/node_modules/headlessui-react-native-example-ui/src/button/button-example.tsx
+
+```
+
+## Examples
+
+### Disabling a button
+
+Add the disabled prop to a Button to disable it:
+
+```jsx
+import { Button } from "headlessui-react-native";
+import { useState } from "react";
+
+function Example() {
+  return (
+    <View>
+      <Button title="hello" disabled />
+    </View>
+  );
+}
+```
+
+## Component API
+
+### Button
+
+A thin wrapper around the native `button` element.
+
+| Prop        | Default  | Description                                                                   |
+| :---------- | :------- | :---------------------------------------------------------------------------- |
+| `as`        | `button` | `String` or `Component` The element or component the button should render as. |
+| `disabled`  | `false`  | `Boolean` Whether or not the button is disabled.                              |
+| `autoFocus` | `false`  | `Boolean` Whether or not the button should receive focus when first rendered. |
+| `type`      | `button` | `String` The button type.                                                     |
