@@ -24,6 +24,7 @@ export function ModalExample() {
     </View>
   );
 }
+
 const modalContainerStyle: ViewStyle = {
   width: "100%",
   height: "100%",

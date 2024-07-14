@@ -1,0 +1,61 @@
+import { SHOWCASE_HOST } from "@/constants";
+import React from "react";
+
+# Modal (Dialog)
+
+## Installation
+
+To get started, install Headless UI via npm:
+
+```
+npm install headlessui-react-native
+```
+
+## Basic example
+
+Modals are built using the `Modal`, `ModalPanel`, and `ModalTitle` components:
+
+<iframe
+  src={`${SHOWCASE_HOST}/components/modal`}
+  width="100%"
+  height="400px"
+></iframe>
+
+```jsx file=<rootDir>/node_modules/headlessui-react-native-example-ui/src/modal/modal-example.tsx
+
+```
+
+## Examples
+
+### Different enter/leave transitions
+
+### Coordinating multiple transitions
+
+### Transitioning on initial mount
+
+## Component API
+
+### Transition
+
+| Prop          | Default    | Description                                                                          |
+| :------------ | :--------- | :----------------------------------------------------------------------------------- |
+| `as`          | `Fragment` | `String` The element the transition should render as.                                |
+| `show`        | —          | `Boolean` Whether the children should be shown or hidden.                            |
+| `appear`      | `false`    | `Boolean` Whether the transition should run on initial mount.                        |
+| `unmount`     | `true`     | `Boolean` Whether the element should be unmounted or hidden based on the show state. |
+| `beforeEnter` | -          | `() => void` Callback which is called before we start the enter transition.          |
+| `afterEnter`  | -          | `() => void` Callback which is called after we finished the enter transition.        |
+| `beforeLeave` | -          | `() => void` Callback which is called before we start the leave transition.          |
+| `afterLeave`  | -          | `() => void` Callback which is called after we finished the leave transition.        |
+
+### TransitionChild
+
+| Prop          | Default    | Description                                                                          |
+| :------------ | :--------- | :----------------------------------------------------------------------------------- |
+| `as`          | `Fragment` | `String` The element the transition child should render as.                          |
+| `appear`      | `false`    | `Boolean` Whether the transition should run on initial mount.                        |
+| `unmount`     | `true`     | `Boolean` Whether the element should be unmounted or hidden based on the show state. |
+| `beforeEnter` | -          | `() => void` Callback which is called before we start the enter transition.          |
+| `afterEnter`  | -          | `() => void` Callback which is called after we finished the enter transition.        |
+| `beforeLeave` | -          | `() => void` Callback which is called before we start the leave transition.          |
+| `afterLeave`  | -          | `() => void` Callback which is called after we finished the leave transition.        |
